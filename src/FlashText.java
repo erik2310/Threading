@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -21,12 +22,11 @@ public class FlashText extends Application {
                     while (true) {
                         if (lblText.getText().trim().length() == 0) {
                             text = "Welcome";
-                        }
-                        else {
+                        } else {
                             text = "";
                         }
 
-                        Platform.runLater(new Runnable()  // Run from JavaFX GUI
+                        Platform.runLater(new Runnable() {  // Run from JavaFX GUI
                             @Override
                             public void run() {
                                 lblText.setText(text);
@@ -34,12 +34,18 @@ public class FlashText extends Application {
                         });
                         Thread.sleep(200);
                     }
-                    catch (InterruptedException ex) {
+                } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }
 
             }
         }).start();
+
+        // Create a scene and place it in the stage
+        Scene scene = new Scene(pane, 200, 50);
+        primaryStage.setTitle("FlashText"); // Set the stage title
+        primaryStage.setScene(scene); // Place the scene in the stage
+        primaryStage.show(); // Display the stage
     }
 
 }
