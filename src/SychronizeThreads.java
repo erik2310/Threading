@@ -28,7 +28,7 @@ public class SychronizeThreads {
             synchronized (this) {
                 sum = sum + 1;
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(5);
                 } catch (InterruptedException ex) {
 
                 }
